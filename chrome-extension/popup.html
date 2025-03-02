@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shopee Auto Clicker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        width: 700px;
+        height: 400px;
+      }
+      .input-container {
+        display: flex;
+        gap: 10px;
+      }
+      .action-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 600px;
+        max-height: 300;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .input-group {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .button:hover {
+        background-color: #0056b3;
+      }
+      .button.stop {
+        background-color: #dc3545;
+      }
+      .button.stop:hover {
+        background-color: #c82333;
+      }
+      .status {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .countdown {
+        font-size: 1.5em;
+        color: #ff0000;
+      }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 16px;
+        color: #007bff;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .tooltip:hover {
+        color: #0056b3;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 150px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%; /* Position tooltip above */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+      }
+
+      .tooltip i {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shopee Auto Clicker</h1>
+      <div class="input-group">
+        <label for="currentTime">Current Time:</label>
+        <input type="text" id="currentTime" readonly />
+      </div>
+      <div class="input-container">
+        <div class="input-group">
+          <label for="hour">Hour:</label>
+          <input type="number" id="hour" value="14" min="0" max="23" />
+          <span class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext">Set the hour for the task</span>
+          </span>
+        </div>
+        <div class="input-group">
+          <label for="minute">Minute:</label>
+          <input type="number" id="minute" value="59" min="0" max="59" />
+          <span class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext">Set the minute for the task</span>
+          </span>
+        </div>
+        <div class="input-group">
+          <label for="second">Second:</label>
+          <input type="number" id="second" value="59" min="0" max="59" />
+          <span class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext">Set the second for the task</span>
+          </span>
+        </div>
+        <div class="input-group">
+          <label for="millisecond">Millisecond:</label>
+          <input type="number" id="millisecond" value="850" min="0" max="999" />
+          <span class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext">Set the millisecond for the task</span>
+          </span>
+        </div>
+      </div>
+      <div class="action-container">
+        <button id="startButton" class="button">Bắt đầu</button>
+        <button id="stopButton" class="button stop">Dừng</button>
+      </div>
+      <div class="status">
+        <p id="statusMessage">Status: Not scheduled</p>
+        <p id="countdown">Countdown: --:--:--</p>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -57,10 +57,10 @@ function clickConfirmButton() {
   }, 50);
 }
 
-const targetHour = 11;
+const targetHour = 14;
 const targetMinute = 59;
 const targetSecond = 59;
-const targetMillisecond = 700;
+const targetMillisecond = 850;
 
 function calculateTargetTimeInMillis(
   targetHour,
